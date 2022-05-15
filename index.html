@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Rave - Splash</title>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?familyMontserrat&family=Lexend:wght@100;300;400;500&family=Raleway:wght@300;500;600;700;800&display=swap" rel="stylesheet">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        <link rel="stylesheet" href="/assets/css/dist/splash.css">
+
+        <script src="/assets/js/fontawesome.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="background"></div>
+
+        <div class="custom-modal" id="staffModal">
+            <div class="modal-background" onclick="closeModal('#staffModal');"></div>
+            <div class="modal-box box">
+                <div class="blur-background">
+                    <img src="/assets/images/telepatia.jpg" class="song-art">
+                </div>
+                <h2>Staff Team</h2>
+                <hr />
+                <h5>Ownership</h5>
+                <p>Saber, Stochy</p>
+                <h5>Senior Administrator</h5>
+                <h5>Administrator</h5>
+                <h5>Developer</h5>
+                <p>PiggyPlex</p>
+                <h5>Radio Helper</h5>
+                <p>Jack</p>
+                <h5>Radio Presenter</h5>
+                <hr />
+                <button class="btn btn-dark" onclick="closeModal('#staffModal');">Close</button>
+            </div>
+        </div>
+
+        <div class="container page px-5">
+            <div class="row title-row d-flex align-items-center justify-content-center">
+                <div class="col text-center">
+                    <h1 class="logo">Rave</h1>
+                </div>
+            </div>
+            <div class="row w-100">
+                <div class="col-lg-3 col-12">
+                    <div class="box">
+                        <div class="blur-background">
+                            <img src="/assets/images/telepatia.jpg">
+                        </div>
+                        <h3 class="box-title">
+                            <i class="fa fa-microphone fa-fw"></i> Now Live
+                        </h3>
+                        <p class="mb-0 dj">Auto DJ</p>
+                    </div>
+
+                    <div class="box">
+                        <div class="blur-background">
+                            <img src="https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d">
+                        </div>
+                        <h3 class="box-title">
+                            <i class="fa fa-headphones fa-fw"></i> Listeners
+                        </h3>
+                        <p class="mb-0">Currently streaming to <b class="listeners">0 listeners</b>.</p>
+                    </div>
+
+                    <div class="box mb-0" onclick="openModal('#staffModal');" style="cursor: pointer;">
+                        <div class="blur-background">
+                            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab">
+                        </div>
+                        <h3 class="box-title">
+                            <i class="fa fa-wave-sine fa-fw"></i> Staff List
+                        </h3>
+                        <p class="mb-0">Click to see the Splash staff team.</p>
+                    </div>
+                </div>
+                <div class="col p-0 px-lg-3 middle-col">
+                    <div class="box">
+                        <div class="blur-background">
+                            <img src="/assets/images/telepatia.jpg" class="song-art">
+                        </div>
+                        <h3 class="box-title">
+                            <i class="fa fa-music fa-fw"></i> What's Playing
+                        </h3>
+                        <div class="player">
+                            <div class="player-image">
+                                <i class="fa fa-play fa-fw" id="playButton"></i>
+                                <img src="/assets/images/telepatia.jpg" class="song-art">
+                            </div>
+                            <div class="player-text">
+                                <p class="song-artist">Kali Uchis</p>
+                                <p class="song-name">telepatía</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="box text-reset text-decoration-none" href="https://discord.gg/8ajMC4tmmY" target="_blank">
+                        <div class="blur-background">
+                            <img src="https://images.unsplash.com/photo-1557672172-298e090bd0f1">
+                        </div>
+                        Join our Discord server
+                    </a>
+                    <div class="box" id="playingNext">
+                        <div class="blur-background">
+                            <img src="/assets/images/telepatia.jpg" class="next-art">
+                        </div>
+                        <h3 class="box-title">
+                            <i class="fa fa-forward fa-fw"></i> Playing Next
+                        </h3>
+                        <div class="player">
+                            <div class="player-image">
+                                <img src="/assets/images/telepatia.jpg" class="next-art">
+                            </div>
+                            <div class="player-text">
+                                <p class="next-artist">Kali Uchis</p>
+                                <p class="next-name">telepatía</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-12 box mb-0" id="recentlyPlayedBox">
+                    <div class="blur-background">
+                        <img src="/assets/images/telepatia.jpg">
+                    </div>
+                    <h3 class="box-title">
+                        <i class="fa fa-history fa-fw"></i> Recently Played
+                    </h3>
+                    <div class="recently-played">
+                        Loading...please be patient
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="/assets/js/splash.js"></script>
+    </body>
+</html>

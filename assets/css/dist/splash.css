@@ -1,0 +1,300 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: white;
+  background: black;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  filter: blur(50px) saturate(200%) brightness(0.3);
+  z-index: -2;
+}
+.background > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.custom-modal {
+  display: none;
+  opacity: 0;
+  transition: opacity 400ms ease-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 300;
+}
+.custom-modal.open {
+  display: block;
+  opacity: 1;
+}
+.custom-modal.open .modal-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.6);
+}
+.custom-modal.open .modal-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  max-width: calc(100vw - 20px);
+}
+.custom-modal.open ~ .page {
+  filter: blur(5px) saturate(1.4) brightness(0.9);
+}
+
+.page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: filter 400ms ease-out;
+}
+
+.title-row {
+  position: relative;
+  font-family: Montserrat, sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: white;
+  margin-bottom: 35px;
+}
+.title-row .logo {
+  font-size: 50px;
+  text-shadow: 0 0 20px white;
+}
+.title-row .logo::before {
+  position: absolute;
+  top: -7.5px;
+  margin-right: 40px;
+  right: 50%;
+  transform: translateX(50%) scale(1.6);
+  color: #fc1ef1;
+  filter: blur(30px);
+  opacity: 0.5;
+  z-index: -5;
+  content: "rave";
+}
+.title-row .logo::after {
+  position: absolute;
+  bottom: -7.5px;
+  margin-left: 40px;
+  left: 50%;
+  transform: translateX(-50%) scale(1.6);
+  color: #1ef1fc;
+  filter: blur(30px);
+  opacity: 0.5;
+  z-index: -5;
+  content: "rave";
+}
+
+#recentlyPlayedBox {
+  height: min-content;
+  max-height: 200px;
+}
+
+.box {
+  position: relative;
+  display: block;
+  height: max-content;
+  padding: 1rem 2.2rem;
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.box h3.box-title {
+  position: relative;
+  text-align: center;
+  font-size: 20px;
+  font-family: Lexend, sans-serif;
+  text-transform: lowercase;
+  mix-blend-mode: overlay;
+}
+.box h3.box-title::after {
+  content: "";
+  position: absolute;
+  bottom: -2.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, white 50%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0.4;
+  width: 100px;
+  height: 2.5px;
+}
+.box .blur-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  mix-blend-mode: overlay;
+  z-index: -1;
+  border-radius: 24px;
+}
+
+.blur-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+.blur-background > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  transform: translate(-50%, -50%);
+  z-index: -2;
+  filter: blur(28px) saturate(2.1) brightness(0.6) contrast(0.9);
+}
+
+.volume-slider {
+  width: 100%;
+}
+.volume-slider input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 400ms ease-out;
+}
+.volume-slider input[type=range]:hover {
+  opacity: 1;
+}
+.volume-slider input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+.volume-slider input[type=range]::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.player {
+  display: flex;
+  flex-direction: row;
+}
+.player .player-image {
+  position: relative;
+  width: 80px;
+  height: auto;
+  border-radius: 8px;
+  overflow: hidden;
+  vertical-align: middle;
+  margin-right: 1rem;
+}
+.player .player-image #playButton {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+  text-shadow: 0 0 20px black;
+}
+.player .player-image .song-art, .player .player-image .next-art {
+  width: 100%;
+  height: auto;
+}
+.player .player-text {
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  flex-direction: column;
+  vertical-align: middle;
+}
+.player .player-text > p {
+  margin-bottom: 0;
+}
+.player .player-text > p.song-artist, .player .player-text > p.next-artist {
+  font-size: 12px;
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  opacity: 0.4;
+}
+.player .player-text > p.song-name, .player .player-text > p.next-name {
+  margin: -10px 0;
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
+}
+
+.recently-played {
+  max-height: 100%;
+  overflow: auto;
+  padding-top: 16px;
+  padding-left: 16px;
+}
+.recently-played .history-item {
+  display: flex;
+  flex-direction: column;
+}
+.recently-played .history-item:hover > img {
+  filter: blur(0);
+}
+.recently-played .history-item > img {
+  width: 100px;
+  height: 100px;
+  border-radius: 24px;
+  filter: blur(8px);
+  transition: filter 400ms ease-out;
+}
+.recently-played .history-item .history-text {
+  margin-top: -35px;
+  margin-left: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 0.3rem 1rem;
+  z-index: 2;
+}
+.recently-played .history-item .history-text > * {
+  margin-bottom: 0;
+}
+.recently-played .history-item .history-text .history-artist {
+  text-transform: lowercase;
+  font-family: Raleway, sans-serif;
+  font-size: 12px;
+}
+.recently-played .history-item .history-text .history-artist::before {
+  content: "By ";
+}
+.recently-played .history-item .history-text .history-name {
+  font-family: Raleway, sans-serif;
+  font-size: 18px;
+}
