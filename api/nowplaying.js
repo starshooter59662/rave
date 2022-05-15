@@ -8,7 +8,7 @@ const formatSong = (songData = {}) => {
     songArtist = song.artist || 'Unknown Artist',
     songAlbum = song.album || '',
     songGenre = song.genre || 'Pop',
-    songArt = (song.art || 'https://cdn.discordapp.com/attachments/825737572051058692/876912878026883112/rave.png').replace(/159\.65\.16\.147/g, 'azuracast.itsrave.net');
+    songArt = (song.art || 'https://cdn.discordapp.com/attachments/825737572051058692/876912878026883112/rave.png').(/159\.65\.16\.147/);
     return {
         name: songTitle,
         artist: songArtist,
@@ -33,7 +33,7 @@ module.exports = async (req, res) => {
         }
     });
     try {
-        let { body } = await got(`https://azuracast.itsrave.net/api/nowplaying/${station}`);
+        let { body } = await got(`http://159.65.16.147/api/nowplaying/${station}`);
         if (!body) return res.status(400).json({
             status: 'error',
             error: {
