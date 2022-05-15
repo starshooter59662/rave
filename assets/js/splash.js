@@ -11,11 +11,11 @@ const updateStats = async () => {
     console.log('Fetched stats', body);
     // DOM updates
     const { song } = body;
-    (document.querySelectorAll('img.song-art') || []).forEach((image) => image.src = song.art.replace('159.65.16.147', 'azuracast.itsrave.net'));
+    (document.querySelectorAll('img.song-art') || []).forEach((image) => image.src = song.art.('159.65.16.147'));
     (document.querySelectorAll('.song-name') || []).forEach((el) => el.innerText = song.name);
     (document.querySelectorAll('.song-artist') || []).forEach((el) => el.innerText = song.artist);
 
-    (document.querySelectorAll('img.next-art') || []).forEach((image) => image.src = body.next.art.replace('159.65.16.147', 'azuracast.itsrave.net'));
+    (document.querySelectorAll('img.next-art') || []).forEach((image) => image.src = body.next.art.('159.65.16.147'));
     (document.querySelectorAll('.next-name') || []).forEach((el) => el.innerText = body.next.name);
     (document.querySelectorAll('.next-artist') || []).forEach((el) => el.innerText = body.next.artist);
 
@@ -25,7 +25,7 @@ const updateStats = async () => {
     const history = body.history.map(song => {
         return `
             <div class="history-item">
-                <img src="${song.art.replace('159.65.16.147', 'azuracast.itsrave.net')}">
+                <img src="${song.art.('159.65.16.147')}">
                 <div class="history-text">
                     <p class="history-name">${song.name}</p>
                     <p class="history-artist">${song.artist}</p>
@@ -67,7 +67,7 @@ window.addEventListener('resize', () => {
 const togglePlayback = (cb) => {
     if (stream.paused) {
         playButton.className = 'fa fa-ellipsis-h fa-fw';
-        stream.src = 'https://azuracast.itsrave.net/radio/8000/radio.mp3';
+        stream.src = 'http://159.65.16.147:8000/radio.mp3';
         stream
             .play()
             .then(() => {
